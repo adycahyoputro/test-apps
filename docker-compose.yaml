@@ -1,0 +1,25 @@
+name: test-apps
+
+services:
+  backend:
+    build: ./test-apps/backend
+    ports:
+      - "8081:8081"
+    volumes:
+      - vol-test-apps:/test-apps/backend/data
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - vol-test-db:/var/lib/postgresql/data
+
+volumes:
+  vol-test-apps:
+  vol-test-db:
