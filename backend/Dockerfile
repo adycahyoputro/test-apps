@@ -1,5 +1,5 @@
 FROM golang:1.23.4
-RUN apk update && apk add --no-cache git
+RUN apt update && apt add --no-cache git
 WORKDIR /test-apps
 COPY . /test-apps/
 RUN go mod tidy
