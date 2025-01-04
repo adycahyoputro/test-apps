@@ -6,7 +6,9 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      - vol-test-apps:/test-apps/backend/data
+      - vol-backend:/test-apps/backend/data
+    depends_on:
+      - db
 
   db:
     image: postgres
@@ -15,11 +17,10 @@ services:
       - 5434:5432
     environment:
       - POSTGRES_DB=testdb
-      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
     volumes:
-      - vol-test-db:/var/lib/postgresql/data
+      - vol-postgres:/var/lib/postgresql/data
 
 volumes:
-  vol-test-apps:
-  vol-test-db:
+  vol-backend:
+  vol-postgres:
