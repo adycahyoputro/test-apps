@@ -2,11 +2,11 @@ name: test-apps
 
 services:
   backend:
-    build: ./test-apps/backend
+    build: ./backend
     ports:
       - "8081:8081"
     volumes:
-      - vol-backend:/test-apps/backend/data
+      - vol-backend:./backend/data
     depends_on:
       - db
 
