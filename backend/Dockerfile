@@ -1,7 +1,11 @@
-FROM golang:alpine
-WORKDIR /test-apps
+FROM golang:3.21-alpine AS builder
+WORKDIR /build
 COPY . .
 RUN go mod download
-RUN go build -o /binary
+RUN go build -o ./binary
 EXPOSE 8082
-CMD [ "/binary" ]
+
+FROM alpine:edge
+WORKDIR /apps
+COPY --from=builder /build/binary ./binary
+CMD [ "/apps/binary" ]
