@@ -1,7 +1,7 @@
 FROM golang:alpine
 WORKDIR /test-apps
-COPY . /test-apps/
+COPY . .
 RUN go mod tidy
 RUN go build -o binary
-EXPOSE 8081
-CMD [ "/test-apps/binary" ]
+EXPOSE 8082
+CMD [ "/binary" ]
