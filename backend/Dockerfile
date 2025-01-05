@@ -1,7 +1,7 @@
 FROM alpine:3.21 AS builder
 WORKDIR /build
 COPY . .
-RUN go mod download
+RUN go mod tidy
 RUN go build -o ./binary
 EXPOSE 8082
 
