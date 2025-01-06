@@ -1,6 +1,7 @@
 package config
 
 import (
+	"backend/utils"
 	"database/sql"
 	"fmt"
 	"log"
@@ -9,17 +10,17 @@ import (
 )
 
 func InitDB() (*sql.DB, error) {
-	// host := utils.GetEnv("DB_HOST")
-	// port := utils.GetEnv("DB_PORT")
-	// user := utils.GetEnv("DB_USER")
-	// password := utils.GetEnv("DB_PASSWORD")
-	// dbName := utils.GetEnv("DB_NAME")
+	host := utils.GetEnv("DB_HOST")
+	port := utils.GetEnv("DB_PORT")
+	user := utils.GetEnv("DB_USER")
+	password := utils.GetEnv("DB_PASSWORD")
+	dbName := utils.GetEnv("DB_NAME")
 
-	host := "192.168.157.160"
-	port := "5434"
-	user := "postgres"
-	password := "root"
-	dbName := "testdb"
+	// host := "192.168.157.160"
+	// port := "5434"
+	// user := "postgres"
+	// password := "root"
+	// dbName := "testdb"
 
 	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbName)
 	db, err := sql.Open("postgres", connStr)

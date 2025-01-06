@@ -3,6 +3,7 @@ package server
 import (
 	"backend/config"
 	"backend/router"
+	"backend/utils"
 	"log"
 )
 
@@ -15,8 +16,8 @@ func Run() error {
 
 	router := router.SetupRouter(db)
 
-	// serverAddress := utils.GetEnv("SERVER_ADDRESS")
-	serverAddress := "192.168.157.160:8082"
+	serverAddress := utils.GetEnv("SERVER_ADDRESS")
+	// serverAddress := "0.0.0.0:8082"
 	log.Printf("server is running on address : %s\n", serverAddress)
 	if err := router.Run(serverAddress); err != nil {
 		return err
