@@ -9,6 +9,7 @@ COPY . .
 FROM alpine:3.21
 # FROM gcr.io/distroless/base-debian11 AS build-release-stage
 WORKDIR /app
-COPY --from=builder /binary .env ./
+COPY --from=builder /binary /binary
+COPY --from=builder /build/.env /binary
 EXPOSE 8082
 CMD [ "/binary" ]
