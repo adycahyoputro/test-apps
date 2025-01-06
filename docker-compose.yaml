@@ -7,7 +7,7 @@ services:
     ports:
       - 8082:8082
     volumes:
-      - vol-backend:/test-app/backend/data/
+      - vol-backend:/test-apps/backend/data/
     depends_on:
       - db
 
@@ -22,6 +22,16 @@ services:
     volumes:
       - vol-postgres:/var/lib/postgresql/data/
 
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - 3001:3000
+    volumes:
+      - vol-frontend:/test-apps/frontend/data
+    depends_on:
+      - backend
 volumes:
   vol-backend:
+  vol-frontend:
   vol-postgres:
