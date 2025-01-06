@@ -1,9 +1,9 @@
 FROM golang:alpine AS builder
 WORKDIR /build
-COPY . ./
+COPY . .
 RUN go mod download
 # COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o /binary
+RUN CGO_ENABLED=0 GOOS=linux go build -o binary
 EXPOSE 8082
 
 # FROM alpine:
