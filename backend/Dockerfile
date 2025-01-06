@@ -10,4 +10,4 @@ EXPOSE 8082
 # FROM gcr.io/distroless/base-debian11 AS build-release-stage
 # WORKDIR /
 # COPY --from=builder /build/binary /
-CMD [ "/build/binary" ]
+CMD [ "/build/./binary" ]
