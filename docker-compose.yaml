@@ -33,5 +33,5 @@ services:
       - backend
 volumes:
   vol-backend:
-  vol-frontend:
   vol-postgres:
+  vol-frontend:
